@@ -36,20 +36,3 @@ $users=['Admin','Supervisor','Operador','Invitado'];
 // Route::get('/param/{z}/{y}', function ($nombre ,$numero) {
 //     return 'Nombre:'.$nombre.' N°=:'.$numero;
 // });
-//desde la plantilla nueva ruta
-
-Route::get('/inicio', function () {
-    return view('inicio');
-});
-###crud de regiones#####
-
-Route::get('/regiones',function(){
-
-$regiones = DB::select('SELECT idRegion,regNombre FROM regiones');
-
-return view('regiones',
-            [
-                'regiones'=>$regiones,
-
-            ]);
-});

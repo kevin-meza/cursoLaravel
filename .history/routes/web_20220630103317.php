@@ -38,18 +38,6 @@ $users=['Admin','Supervisor','Operador','Invitado'];
 // });
 //desde la plantilla nueva ruta
 
-Route::get('/inicio', function () {
+Route::get('/inico',function(){
     return view('inicio');
-});
-###crud de regiones#####
-
-Route::get('/regiones',function(){
-
-$regiones = DB::select('SELECT idRegion,regNombre FROM regiones');
-
-return view('regiones',
-            [
-                'regiones'=>$regiones,
-
-            ]);
-});
+})

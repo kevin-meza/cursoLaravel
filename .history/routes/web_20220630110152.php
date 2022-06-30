@@ -44,12 +44,6 @@ Route::get('/inicio', function () {
 ###crud de regiones#####
 
 Route::get('/regiones',function(){
-
+return 'obtenemos las regiones';
 $regiones = DB::select('SELECT idRegion,regNombre FROM regiones');
-
-return view('regiones',
-            [
-                'regiones'=>$regiones,
-
-            ]);
 });

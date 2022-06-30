@@ -41,15 +41,3 @@ $users=['Admin','Supervisor','Operador','Invitado'];
 Route::get('/inicio', function () {
     return view('inicio');
 });
-###crud de regiones#####
-
-Route::get('/regiones',function(){
-
-$regiones = DB::select('SELECT idRegion,regNombre FROM regiones');
-
-return view('regiones',
-            [
-                'regiones'=>$regiones,
-
-            ]);
-});

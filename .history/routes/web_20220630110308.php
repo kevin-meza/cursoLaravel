@@ -47,9 +47,5 @@ Route::get('/regiones',function(){
 
 $regiones = DB::select('SELECT idRegion,regNombre FROM regiones');
 
-return view('regiones',
-            [
-                'regiones'=>$regiones,
-
-            ]);
+dd($regiones);
 });
