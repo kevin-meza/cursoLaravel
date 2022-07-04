@@ -63,6 +63,6 @@ Route::post('/region/store', function () {
 
 return redirect('/regiones')->with(['mensaje'=>'Region: '.$regNombre.' Agregada Correctamente']);
 });
-Route::get('/region/update', function () {
+Route::get('/region/edit', function () {
     return view('regionEdit');
 });

@@ -59,10 +59,7 @@ Route::get('/region/create', function () {
 Route::post('/region/store', function () {
     //permite validar mas facil
     $regNombre= request()->regNombre;
-    DB::insert('INSERT INTO regiones (regNombre) VALUES (:regNombre)',[$regNombre]);
+   $cons= DB::insert('INSERT INTO regiones (regNombre) VALUES (:regNombre)');
+   DB::exec($cons);
 
-return redirect('/regiones')->with(['mensaje'=>'Region: '.$regNombre.' Agregada Correctamente']);
-});
-Route::get('/region/update', function () {
-    return view('regionEdit');
 });

@@ -4,11 +4,9 @@
     <h1>Panel de administración de regiones</h1>
 
 
-@if(session('mensaje'))
     <div class="alert alert-primary" role="alert">
-       {{session('mensaje')}}
+        This is a primary alert—check it out!
       </div>
- @endif
     <div class="row my-3 d-flex justify-content-between">
         <div class="col">
             <a href="/admin" class="btn btn-outline-secondary">
