@@ -63,7 +63,6 @@ Route::post('/region/store', function () {
  DB::table('regiones')->insert(['regNombre'=>$regNombre]);
 return redirect('/regiones')->with(['mensaje'=>'Region: '.$regNombre.' Agregada Correctamente']);
 });
-
 Route::get('/region/update', function () {
     return view('regionEdit');
 });
@@ -87,8 +86,6 @@ catch(Throwable $th){
     }
 });
 
-Route::get('/region/delete/{id}', function($id){
-    $region=DB::table('regiones')->where('idRegion',$id)->first();
+Route::get('region/delete/{id}', function(){
 
-    return view('regionDelete',['region'=>$region]);
 });

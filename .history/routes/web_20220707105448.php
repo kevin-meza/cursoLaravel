@@ -87,8 +87,6 @@ catch(Throwable $th){
     }
 });
 
-Route::get('/region/delete/{id}', function($id){
-    $region=DB::table('regiones')->where('idRegion',$id)->first();
+Route::get('region/delete/{id}', function($id){
 
-    return view('regionDelete',['region'=>$region]);
 });

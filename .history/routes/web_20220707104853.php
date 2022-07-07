@@ -63,7 +63,6 @@ Route::post('/region/store', function () {
  DB::table('regiones')->insert(['regNombre'=>$regNombre]);
 return redirect('/regiones')->with(['mensaje'=>'Region: '.$regNombre.' Agregada Correctamente']);
 });
-
 Route::get('/region/update', function () {
     return view('regionEdit');
 });
@@ -78,17 +77,11 @@ Route::post('/region/update',function(){
     $idRegion=request()->idRegion;
 
     try{
-    DB::table('regiones')->where('idRegion',$idRegion)->update(['regNombre'=>$regNombre]);
+    DB::table('regiones')->where('idRegions',$idRegion)->update(['regNombre'=>$regNombre]);
 
     return redirect('/regiones')->with(['mensaje' => 'Región modificada correctamente']);
 }
 catch(Throwable $th){
     return redirect('/regiones')->with(['mensaje'=>'No se pudo modificar']);
     }
-});
-
-Route::get('/region/delete/{id}', function($id){
-    $region=DB::table('regiones')->where('idRegion',$id)->first();
-
-    return view('regionDelete',['region'=>$region]);
 });
