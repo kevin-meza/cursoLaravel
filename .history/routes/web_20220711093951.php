@@ -107,44 +107,9 @@ Route::post('/region/destroy',function(){
     $idRegion=request()->idRegion;
     try{
     DB::table('regiones')->where('idRegion',$idRegion)->delete();
-    return redirect('/regiones')->with(['mensaje' => 'Región '.$regNombre.'Eliminada correctamente']);
+    return redirect('/regiones')->with(['mensaje' => 'Región Eliminada correctamente']);
     }
     catch(Throwable $th){
         return redirect('/regiones')->with(['mensaje' => 'Región No se puede eliminar']);
     }
-});
-Route::get('/destinos', function () {
-    //obtenemos listado de regiones
-    // $destinos = DB::table('destinos')->get();
-    $destinos = DB::table('destinos as d')
-                    ->join('regiones as r','r.idRegion','=','d.idRegion')
-                    ->get();
-    //Pasamos datos a la vista
-
-    return view('destinos',
-     ['destinos' => $destinos,
-
-        ]);
-});
-Route::get('/destino/create', function () {
-    $regiones=DB::table('regiones')->get();
-
-    return view('destinoCreate',['regiones'=>$regiones]);
-});
-Route::post('/destino/store', function () {
-    $destNombre = request()->destNombre;
-    $idRegion = request()->idRegion;
-    $destPrecio = request()->destPrecio;
-    $destAsientos = request()->destAsientos;
-    $destDisponibles = request()->destDisponibles;
-
-
-    DB::table('destinos')->insert(
-        ['destNombre'=>$destNombre,
-         'idRegion'=>$idRegion,
-         'destPrecio'=>$destPrecio,
-         'destAsientos'=>$destAsientos,
-         'destDisponibles'=>$destDisponibles
-        ]);
-        return redirect('/destinos')->with(['mensaje'=>'Destino:'.$destNombre.' Agregado Correctamente']);
 });

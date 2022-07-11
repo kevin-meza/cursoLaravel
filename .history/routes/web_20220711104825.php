@@ -146,5 +146,5 @@ Route::post('/destino/store', function () {
          'destAsientos'=>$destAsientos,
          'destDisponibles'=>$destDisponibles
         ]);
-        return redirect('/destinos')->with(['mensaje'=>'Destino:'.$destNombre.' Agregado Correctamente']);
+        return redirect('/destinos')->with(['mensaje'=>'Agregada Correctamente']);
 });

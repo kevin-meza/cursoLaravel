@@ -11,12 +11,12 @@
             Volver a panel de regiones
         </a>
     </div>
-@else
+@endif
     <div class="alert text-danger bg-light p-4 col-8 mx-auto shadow">
         Se eliminará la región
         <span class="fs-4">{{ $region->regNombre }}</span>.
         <form action="/region/destroy" method="post">
-@csrf
+
             <input type="hidden" name="idRegion"
                    value="{{ $region->idRegion}}">
             <input type="hidden" name="regNombre"
@@ -28,6 +28,6 @@
         </form>
 
     </div>
-@endif
+
 
 @endsection

@@ -2,7 +2,7 @@
 @section('contenido')
 
     <h1>Baja de una región</h1>
-
+{{dd($destino)}}
 @if($cantidad > 0)
 <div class="alert text-danger bg-light p-4 col-8 mx-auto shadow">
         No se puede eliminar la región

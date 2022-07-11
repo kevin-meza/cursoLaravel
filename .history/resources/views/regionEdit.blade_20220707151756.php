@@ -4,7 +4,7 @@
     <h1>Modificar Region</h1>
 {{-- {{dd($region)}} --}}
     <div class="alert bg-light p-4 col-8 mx-auto shadow">
-        <form action="/region/update" method="post" onsubmit="return checkSubmit();">
+        <form action="/region/update" method="post" onsubmit="return checkSubmit();!>
             @csrf
             <div class="form-group">
                 <label for="regNombre">Nombre de la región</label>
@@ -16,14 +16,12 @@
 
 
             <button class="btn btn-dark my-3 px-4">Modificar región</button>
-            <input type="submit" value="enviar">
             <a href="/regiones/edit" class="btn btn-outline-secondary">
                 Volver a panel de regiones
             </a>
         </form>
     </div>
 <script>
-     enviando = false;
     function checkSubmit() {
     if (!enviando) {
         enviando= true;

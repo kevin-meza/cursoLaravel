@@ -23,7 +23,6 @@
         </form>
     </div>
 <script>
-     enviando = false;
     function checkSubmit() {
     if (!enviando) {
         enviando= true;

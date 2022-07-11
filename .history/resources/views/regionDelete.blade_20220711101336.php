@@ -20,7 +20,7 @@
             <input type="hidden" name="idRegion"
                    value="{{ $region->idRegion}}">
             <input type="hidden" name="regNombre"
-                   value="{{ $region->regNombre }}">
+                   value="{{ $destino->destNombre }}">
             <button class="btn btn-danger btn-block my-3">Confirmar baja</button>
             <a href="/regiones" class="btn btn-outline-secondary btn-block my-2">
                 volver a panel

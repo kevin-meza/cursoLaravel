@@ -16,14 +16,12 @@
 
 
             <button class="btn btn-dark my-3 px-4">Modificar región</button>
-            <input type="submit" value="enviar">
             <a href="/regiones/edit" class="btn btn-outline-secondary">
                 Volver a panel de regiones
             </a>
         </form>
     </div>
 <script>
-     enviando = false;
     function checkSubmit() {
     if (!enviando) {
         enviando= true;

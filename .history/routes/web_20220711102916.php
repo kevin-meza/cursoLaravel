@@ -127,24 +127,5 @@ Route::get('/destinos', function () {
         ]);
 });
 Route::get('/destino/create', function () {
-    $regiones=DB::table('regiones')->get();
-
-    return view('destinoCreate',['regiones'=>$regiones]);
-});
-Route::post('/destino/store', function () {
-    $destNombre = request()->destNombre;
-    $idRegion = request()->idRegion;
-    $destPrecio = request()->destPrecio;
-    $destAsientos = request()->destAsientos;
-    $destDisponibles = request()->destDisponibles;
-
-
-    DB::table('destinos')->insert(
-        ['destNombre'=>$destNombre,
-         'idRegion'=>$idRegion,
-         'destPrecio'=>$destPrecio,
-         'destAsientos'=>$destAsientos,
-         'destDisponibles'=>$destDisponibles
-        ]);
-        return redirect('/destinos')->with(['mensaje'=>'Destino:'.$destNombre.' Agregado Correctamente']);
+    return view('destinoCreate');
 });
