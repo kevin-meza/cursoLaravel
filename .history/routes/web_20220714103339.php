@@ -149,7 +149,7 @@ Route::post('/destino/store', function () {
         return redirect('/destinos')->with(['mensaje'=>'Destino:'.$destNombre.' Agregado Correctamente']);
 });
 Route::get('/destino/edit/{id}', function ($id) {
-    $destino = DB::table('destinos')
+    $destinos = DB::table('destinos')
         ->where('idDestino', $id)
         ->first();
 
@@ -160,57 +160,9 @@ Route::get('/destino/edit/{id}', function ($id) {
         'destinoEdit',
         [
             'regiones' => $regiones,
-            'destino' => $destino
+            'destino' => $destinos
         ]
     );
-});
-Route::post('/destino/update', function ()
-{
-    $request = [
-        "destNombre" => request()->destNombre,
-        "idRegion" => request()->idRegion,
-        "destPrecio" => request()->destPrecio,
-        "destAsientos" => request()->destAsientos,
-        "destDisponibles" => request()->destDisponibles
-    ];
 
-    try {
-        DB::table('destinos')
-            ->where('idDestino', request()->idDestino)
-            ->update($request);
-        return redirect('/destinos')
-            ->with(['mensaje' => 'Destino: '.request()->destNombre.' modificado correctamente']);
-    } catch (\Throwable $th)
-    {
-        //throw $th;
-        return redirect('/destinos')->with(['mensaje' => 'No se pudo modificar el destino.']);
-    }
 });
 
-Route::get('/destino/delete/{id}',function($id)
-{
-
-$destino =  DB::table('destinos as d')
-->join('regiones as r', 'r.idRegion', '=', 'd.idRegion')
-->where('idDestino',$id)->first();
-return view(
-    'destinoDelete',
-    [
-
-        'destino' => $destino
-    ]);
-}
-);
-
-Route::post('/destino/destroy',function(){
-    $destNombre = request()->destNombre;
-    $idDestino = request()->idDestino;
-try{
-    DB::table('destinos')
-        ->where('idDestino', $idDestino)
-        ->delete();
-        return redirect('/destinos')->with(['mensaje'=>'Destino eliminar']);
-}catch ( Throwable $th){
-return redirect('/destinos')->with(['mensaje'=>'No se pudo eliminar']);
-}
-});

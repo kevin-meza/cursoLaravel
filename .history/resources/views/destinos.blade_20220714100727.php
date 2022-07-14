@@ -48,7 +48,7 @@
                     <i class="bi bi-pencil-square"></i>
                     Modificar
                 </a>
-                <a href="/destino/delete/{{$destino->idDestino}}" class="btn btn-outline-secondary me-1">
+                <a href="#" class="btn btn-outline-secondary me-1">
                     <i class="bi bi-trash"></i>
                     &nbsp;Eliminar&nbsp;
                 </a>

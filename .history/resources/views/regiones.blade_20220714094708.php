@@ -45,5 +45,5 @@
         </li>
         @endforeach
     </ul>
-      {{$regiones->links()}}
+{{$regiones->links()}}
 @endsection

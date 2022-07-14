@@ -44,11 +44,11 @@
                 </p>
             </div>
             <div class="col text-end btn-group">
-                <a href="/destino/edit/{{$destino->idDestino}}" class="btn btn-outline-secondary me-1">
+                <a href="#" class="btn btn-outline-secondary me-1">
                     <i class="bi bi-pencil-square"></i>
                     Modificar
                 </a>
-                <a href="/destino/delete/{{$destino->idDestino}}" class="btn btn-outline-secondary me-1">
+                <a href="#" class="btn btn-outline-secondary me-1">
                     <i class="bi bi-trash"></i>
                     &nbsp;Eliminar&nbsp;
                 </a>
@@ -56,7 +56,7 @@
         </li>
         @endforeach
     </ul>
-    <div class="my-3 d-flex justify-content-center">
+    <div class="my-3 d-flex justify-content-between">
 {{$destinos->links()}}
 </div>
 @endsection

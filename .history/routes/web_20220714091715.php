@@ -48,7 +48,7 @@ Route::get('/inicio', function () {
 Route::get('/regiones',function(){
 
 // $regiones = DB::select('SELECT idRegion,regNombre FROM regiones');
-$regiones= DB::table('regiones')->paginate(5);
+$regiones= DB::table('regiones')->get();
 return view('regiones',
             [
                 'regiones'=>$regiones,
@@ -118,7 +118,7 @@ Route::get('/destinos', function () {
     // $destinos = DB::table('destinos')->get();
     $destinos = DB::table('destinos as d')
                     ->join('regiones as r','r.idRegion','=','d.idRegion')
-                    ->paginate(5);
+                    ->simplePaginate(5);
     //Pasamos datos a la vista
 
     return view('destinos',
@@ -127,7 +127,7 @@ Route::get('/destinos', function () {
         ]);
 });
 Route::get('/destino/create', function () {
-    $regiones=DB::table('regiones')->paginate(5);
+    $regiones=DB::table('regiones')->get();
 
     return view('destinoCreate',['regiones'=>$regiones]);
 });
@@ -147,70 +147,4 @@ Route::post('/destino/store', function () {
          'destDisponibles'=>$destDisponibles
         ]);
         return redirect('/destinos')->with(['mensaje'=>'Destino:'.$destNombre.' Agregado Correctamente']);
-});
-Route::get('/destino/edit/{id}', function ($id) {
-    $destino = DB::table('destinos')
-        ->where('idDestino', $id)
-        ->first();
-
-    $regiones = DB::table('regiones')
-        ->get();
-
-    return view(
-        'destinoEdit',
-        [
-            'regiones' => $regiones,
-            'destino' => $destino
-        ]
-    );
-});
-Route::post('/destino/update', function ()
-{
-    $request = [
-        "destNombre" => request()->destNombre,
-        "idRegion" => request()->idRegion,
-        "destPrecio" => request()->destPrecio,
-        "destAsientos" => request()->destAsientos,
-        "destDisponibles" => request()->destDisponibles
-    ];
-
-    try {
-        DB::table('destinos')
-            ->where('idDestino', request()->idDestino)
-            ->update($request);
-        return redirect('/destinos')
-            ->with(['mensaje' => 'Destino: '.request()->destNombre.' modificado correctamente']);
-    } catch (\Throwable $th)
-    {
-        //throw $th;
-        return redirect('/destinos')->with(['mensaje' => 'No se pudo modificar el destino.']);
-    }
-});
-
-Route::get('/destino/delete/{id}',function($id)
-{
-
-$destino =  DB::table('destinos as d')
-->join('regiones as r', 'r.idRegion', '=', 'd.idRegion')
-->where('idDestino',$id)->first();
-return view(
-    'destinoDelete',
-    [
-
-        'destino' => $destino
-    ]);
-}
-);
-
-Route::post('/destino/destroy',function(){
-    $destNombre = request()->destNombre;
-    $idDestino = request()->idDestino;
-try{
-    DB::table('destinos')
-        ->where('idDestino', $idDestino)
-        ->delete();
-        return redirect('/destinos')->with(['mensaje'=>'Destino eliminar']);
-}catch ( Throwable $th){
-return redirect('/destinos')->with(['mensaje'=>'No se pudo eliminar']);
-}
 });

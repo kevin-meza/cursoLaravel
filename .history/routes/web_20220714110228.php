@@ -209,7 +209,7 @@ try{
     DB::table('destinos')
         ->where('idDestino', $idDestino)
         ->delete();
-        return redirect('/destinos')->with(['mensaje'=>'Destino eliminar']);
+        return redirect('/destinos')->with(['mensaje'=>'Destinoeliminar']);
 }catch ( Throwable $th){
 return redirect('/destinos')->with(['mensaje'=>'No se pudo eliminar']);
 }

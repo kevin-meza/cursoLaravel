@@ -190,9 +190,7 @@ Route::post('/destino/update', function ()
 Route::get('/destino/delete/{id}',function($id)
 {
 
-$destino =  DB::table('destinos as d')
-->join('regiones as r', 'r.idRegion', '=', 'd.idRegion')
-->where('idDestino',$id)->first();
+$destino =  DB::table('destinos')->where('idDestino',$id)->first();
 return view(
     'destinoDelete',
     [
@@ -201,16 +199,3 @@ return view(
     ]);
 }
 );
-
-Route::post('/destino/destroy',function(){
-    $destNombre = request()->destNombre;
-    $idDestino = request()->idDestino;
-try{
-    DB::table('destinos')
-        ->where('idDestino', $idDestino)
-        ->delete();
-        return redirect('/destinos')->with(['mensaje'=>'Destino eliminar']);
-}catch ( Throwable $th){
-return redirect('/destinos')->with(['mensaje'=>'No se pudo eliminar']);
-}
-});

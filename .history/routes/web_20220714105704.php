@@ -202,15 +202,6 @@ return view(
 }
 );
 
-Route::post('/destino/destroy',function(){
-    $destNombre = request()->destNombre;
-    $idDestino = request()->idDestino;
-try{
-    DB::table('destinos')
-        ->where('idDestino', $idDestino)
-        ->delete();
-        return redirect('/destinos')->with(['mensaje'=>'Destino eliminar']);
-}catch ( Throwable $th){
-return redirect('/destinos')->with(['mensaje'=>'No se pudo eliminar']);
-}
+Route::post('/dstino/destroy',function(){
+
 });
